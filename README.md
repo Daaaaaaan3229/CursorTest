@@ -2,6 +2,47 @@
 
 無駄にエフェクトがド派手な電卓 Web アプリ。iPhone の Safari からそのまま使えます。
 
+## iPhone で今すぐ開く（Settings 不要・一番簡単）
+
+GitHub の設定画面は **スマホアプリには出てきません**。以下の方法なら設定不要です。
+
+### 手順
+
+1. iPhone の **Safari** で PR を開く  
+   https://github.com/Daaaaaaan3229/CursorTest/pull/1
+2. ファイル一覧から **`calculator-standalone.html`** をタップ
+3. 右上の **⋯（三点）** → **ダウンロード**（または Raw を開いて共有）
+4. **ファイル** アプリ → ダウンロード → `calculator-standalone.html` を長押し → **共有** → **Safari で開く**
+5. 動いたら Safari の **共有ボタン** → **ホーム画面に追加**
+
+これでオフラインでも使えるアプリになります。
+
+---
+
+## なぜ「Settings（設定）」が見つからない？
+
+| 原因 | 説明 |
+|------|------|
+| GitHub アプリを使っている | リポジトリの Settings は **アプリにありません**。Safari で github.com を開いてください |
+| スマホの Safari | タブが `...` メニューに隠れていることがあります。横スクロールまたは `...` を確認 |
+| 非公開リポジトリ | 無料プランでは GitHub Pages を **非公開リポジトリに公開できません** |
+
+---
+
+## Web URL で公開したい場合（PC が必要）
+
+1. PC のブラウザで https://github.com/Daaaaaaan3229/CursorTest を開く
+2. 上部タブの **Settings**（設定）をクリック  
+   直接 URL: https://github.com/Daaaaaaan3229/CursorTest/settings
+3. 左メニュー **Pages** をクリック
+4. **Build and deployment** → Source を **GitHub Actions** に変更
+5. PR #1 を **main にマージ**（Actions が自動デプロイ）
+6. 数分後、`https://daaaaaaan3229.github.io/CursorTest/` で開ける
+
+※ 非公開リポジトリのままだと Pages は使えません。**Settings → General → Danger Zone → Change visibility** で Public に変更するか、上の「ファイルダウンロード」方法を使ってください。
+
+---
+
 ## 機能
 
 - 四則演算（＋ − × ÷）、AC、±、%
@@ -10,34 +51,15 @@
 - `=` 押下で紙吹雪＋フラッシュ＋振動
 - 効果音（Web Audio API）
 - 星空アニメーション背景
-- ホーム画面に追加可能（PWA 対応）
-
-## iPhone で開く方法
-
-### 方法1: GitHub Pages（推奨）
-
-1. リポジトリの **Settings → Pages** を開く
-2. **Source** を `Deploy from a branch` に設定
-3. **Branch** を `main`（またはこの PR のブランチ）、フォルダを `/ (root)` に設定
-4. 数分後、表示された URL（例: `https://<user>.github.io/<repo>/`）を iPhone の Safari で開く
-5. 共有ボタン → **ホーム画面に追加** でアプリのように使える
-
-### 方法2: ローカルサーバー（開発・同一 Wi‑Fi）
-
-```bash
-cd /path/to/repo
-python3 -m http.server 8080
-```
-
-iPhone を PC と同じ Wi‑Fi に接続し、Safari で `http://<PCのIP>:8080` を開く。
 
 ## ファイル構成
 
 ```
-index.html       … メインページ
-css/style.css    … スタイル
-js/calculator.js … 計算ロジック & エフェクト
-manifest.json    … PWA マニフェスト
+index.html                  … メインページ（複数ファイル版）
+calculator-standalone.html  … 1ファイル完結版（iPhone 向け・おすすめ）
+css/style.css
+js/calculator.js
+manifest.json
 ```
 
 ## ライセンス
